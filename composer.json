@@ -1,0 +1,37 @@
+{
+	"name": "kdyby/annotations",
+	"type": "library",
+	"description": "Doctrine Annotations integration into Nette Framework",
+	"keywords": ["nette", "kdyby", "doctrine", "annotations"],
+	"homepage": "http://kdyby.org",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Filip Procházka",
+			"homepage": "http://filip-prochazka.com"
+		},
+		{
+			"name": "Jáchym Toušek",
+			"homepage": "http://enumag.cz",
+			"email": "enumag@gmail.com"
+		}
+	],
+	"support": {
+		"email": "filip@prochazka.su",
+		"issues": "https://github.com/kdyby/annotations/issues"
+	},
+	"require": {
+		"nette/nette": "@dev",
+		"doctrine/annotations": "@dev",
+		"doctrine/cache": "@dev",
+		"kdyby/doctrine-cache": "@dev"
+	},
+	"conflict": {
+		"kdyby/doctrine": "0.9.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Kdyby\\Annotations\\": "src/"
+		}
+	}
+}

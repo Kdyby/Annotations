@@ -36,7 +36,7 @@ This extension creates new configuration section `annotations`. You can configur
 
 ```yml
 annotations:
-	ignore:
+	ignored:
 		- myannotation
 	debug: yes
 ```

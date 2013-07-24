@@ -10,8 +10,6 @@
 
 namespace Kdyby\Annotations\DI;
 
-use Doctrine;
-use Kdyby;
 use Nette;
 use Nette\PhpGenerator as Code;
 use Nette\Utils\Validators;

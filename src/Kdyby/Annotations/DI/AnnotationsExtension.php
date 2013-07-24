@@ -65,7 +65,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 		$builder->addDefinition($this->prefix('reader'))
 			->setClass('Doctrine\Common\Annotations\Reader')
 			->setFactory('Doctrine\Common\Annotations\CachedReader', array(
-				new Nette\DI\Statement('Doctrine\Common\Annotations\IndexedReader', array($this->prefix('@reflectionReader'))),
+				$this->prefix('@reflectionReader'),
 				new Nette\DI\Statement('Kdyby\DoctrineCache\Cache', array(
 					'@Nette\Caching\IStorage',
 					'Doctrine.Annotations',

@@ -36,7 +36,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 
 	/** @var array */
 	public $defaults = array(
-		'ignored' => array(
+		'ignore' => array(
 			'persistent',
 			'serializationVersion',
 		),
@@ -54,8 +54,8 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 			->setClass('Doctrine\Common\Annotations\AnnotationReader')
 			->setAutowired(FALSE);
 
-		Validators::assertField($config, 'ignored', 'array');
-		foreach ($config['ignored'] as $annotationName) {
+		Validators::assertField($config, 'ignore', 'array');
+		foreach ($config['ignore'] as $annotationName) {
 			$builder->getDefinition($this->prefix('reflectionReader'))
 				->addSetup('addGlobalIgnoredName', array($annotationName));
 		}

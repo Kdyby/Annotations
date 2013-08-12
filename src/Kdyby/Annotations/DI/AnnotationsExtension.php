@@ -82,9 +82,6 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 
 
 
-	/**
-	 * @param \Nette\Configurator $configurator
-	 */
 	public static function register(Nette\Configurator $configurator)
 	{
 		$configurator->onCompile[] = function ($config, Nette\DI\Compiler $compiler) {

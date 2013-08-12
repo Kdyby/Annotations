@@ -26,6 +26,9 @@
 		"doctrine/cache": "@dev",
 		"kdyby/doctrine-cache": "@dev"
 	},
+	"require-dev": {
+		"nette/tester": "@dev"
+	},
 	"conflict": {
 		"kdyby/doctrine": "0.9.*"
 	},

@@ -1,0 +1,19 @@
+php:
+	date.timezone: Europe/Prague
+
+
+extensions:
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+
+
+nette:
+	security:
+		frames: null
+
+	session:
+		autoStart: false
+
+
+services:
+	cacheStorage:
+		class: Nette\Caching\Storages\MemoryStorage

@@ -21,10 +21,9 @@
 		"issues": "https://github.com/kdyby/annotations/issues"
 	},
 	"require": {
-		"nette/nette": "@dev",
-		"doctrine/annotations": "@dev",
-		"doctrine/cache": "@dev",
-		"kdyby/doctrine-cache": "@dev"
+		"nette/nette": "~2.0",
+		"doctrine/annotations": "~1.1",
+		"kdyby/doctrine-cache": "~1.0"
 	},
 	"require-dev": {
 		"nette/tester": "@dev"

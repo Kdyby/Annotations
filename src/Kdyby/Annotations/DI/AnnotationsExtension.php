@@ -50,14 +50,13 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 		$builder = $this->getContainerBuilder();
 		$config = $this->getConfig($this->defaults);
 
-		$builder->addDefinition($this->prefix('reflectionReader'))
+		$reflectionReader = $builder->addDefinition($this->prefix('reflectionReader'))
 			->setClass('Doctrine\Common\Annotations\AnnotationReader')
 			->setAutowired(FALSE);
 
 		Validators::assertField($config, 'ignore', 'array');
 		foreach ($config['ignore'] as $annotationName) {
-			$builder->getDefinition($this->prefix('reflectionReader'))
-				->addSetup('addGlobalIgnoredName', array($annotationName));
+			$reflectionReader->addSetup('addGlobalIgnoredName', array($annotationName));
 		}
 
 		$builder->addDefinition($this->prefix('reader'))

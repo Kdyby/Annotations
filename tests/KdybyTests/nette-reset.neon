@@ -2,10 +2,6 @@ php:
 	date.timezone: Europe/Prague
 
 
-extensions:
-	annotations: Kdyby\Annotations\DI\AnnotationsExtension
-
-
 nette:
 	security:
 		frames: null

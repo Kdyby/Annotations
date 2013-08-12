@@ -11,7 +11,7 @@
 namespace Kdyby\Annotations\DI;
 
 use Nette;
-use Nette\PhpGenerator as Code;
+use Nette\Utils\PhpGenerator as Code;
 use Nette\Utils\Validators;
 
 
@@ -69,8 +69,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 					$config['debug']
 				)),
 				$config['debug']
-			))
-			->setInject(FALSE);
+			));
 	}
 
 

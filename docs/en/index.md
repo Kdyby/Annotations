@@ -4,8 +4,8 @@ Documentation
 This extension is here to provide integration of [Doctrine Annotations](http://docs.doctrine-project.org/projects/doctrine-common/en/latest/reference/annotations.html) into Nette Framework.
 
 
-Instalation
------------
+Installation
+------------
 
 The best way to install Kdyby/Annotations is using  [Composer](http://getcomposer.org/):
 

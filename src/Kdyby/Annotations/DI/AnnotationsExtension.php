@@ -11,7 +11,6 @@
 namespace Kdyby\Annotations\DI;
 
 use Nette;
-use Nette\PhpGenerator as Code;
 use Nette\Utils\Validators;
 
 
@@ -94,7 +93,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 
 
 
-	public function afterCompile(Code\ClassType $class)
+	public function afterCompile(Nette\PhpGenerator\ClassType $class)
 	{
 		$init = $class->methods['initialize'];
 		$init->addBody('Doctrine\Common\Annotations\AnnotationRegistry::registerLoader("class_exists");');

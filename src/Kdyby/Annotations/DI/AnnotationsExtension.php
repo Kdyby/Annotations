@@ -10,6 +10,7 @@
 
 namespace Kdyby\Annotations\DI;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use Nette;
 use Nette\Utils\PhpGenerator as Code;
 use Nette\Utils\Validators;
@@ -70,6 +71,9 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 				)),
 				$config['debug']
 			));
+
+		// for runtime
+		AnnotationRegistry::registerLoader("class_exists");
 	}
 
 

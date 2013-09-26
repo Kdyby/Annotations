@@ -82,9 +82,9 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 	/**
 	 * @return array
 	 */
-	public function getConfig(array $defaults = NULL)
+	public function getConfig(array $defaults = NULL, $expand = TRUE)
 	{
-		$config = parent::getConfig($defaults);
+		$config = parent::getConfig($defaults, $expand);
 
 		// ignoredAnnotations
 		$globalConfig = $this->compiler->getConfig();

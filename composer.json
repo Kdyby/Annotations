@@ -23,7 +23,7 @@
 	"require": {
 		"nette/nette": "@dev",
 		"doctrine/annotations": "~1.1",
-		"kdyby/doctrine-cache": "@dev"
+		"kdyby/doctrine-cache": "~2.0"
 	},
 	"require-dev": {
 		"nette/tester": "@dev"

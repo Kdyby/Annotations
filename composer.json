@@ -35,5 +35,10 @@
 		"psr-0": {
 			"Kdyby\\Annotations\\": "src/"
 		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.0-dev"
+		}
 	}
 }

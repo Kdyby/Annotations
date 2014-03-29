@@ -11,6 +11,7 @@
 namespace Kdyby\Annotations\DI;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
+use Kdyby\DoctrineCache\DI\Helpers;
 use Nette;
 use Nette\PhpGenerator as Code;
 use Nette\Utils\Validators;
@@ -41,6 +42,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 			'persistent',
 			'serializationVersion',
 		),
+		'cache' => 'default',
 		'debug' => '%debugMode%',
 	);
 
@@ -64,11 +66,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 			->setClass('Doctrine\Common\Annotations\Reader')
 			->setFactory('Doctrine\Common\Annotations\CachedReader', array(
 				$this->prefix('@reflectionReader'),
-				new Nette\DI\Statement('Kdyby\DoctrineCache\Cache', array(
-					'@Nette\Caching\IStorage',
-					'Doctrine.Annotations',
-					$config['debug']
-				)),
+				Helpers::processCache($this, $config['cache'], 'annotations'),
 				$config['debug']
 			))
 			->setInject(FALSE);

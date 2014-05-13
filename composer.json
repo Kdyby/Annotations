@@ -28,7 +28,8 @@
 		"kdyby/doctrine-cache": "~2.2"
 	},
 	"require-dev": {
-		"nette/tester": "@dev"
+		"nette/tester": "@dev",
+		"jakub-onderka/php-parallel-lint": "~0.6"
 	},
 	"conflict": {
 		"kdyby/doctrine": "0.9.*"

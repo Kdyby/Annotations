@@ -1,8 +1,8 @@
 language: php
 
 env:
-  - NETTE=default # 2.2
-  - NETTE=nette-dev
+  - NETTE=default # dev
+  - NETTE=nette-2.2
 
 php:
   - 5.3.3

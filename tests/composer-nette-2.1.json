@@ -1,0 +1,47 @@
+{
+	"name": "kdyby/annotations",
+	"type": "library",
+	"description": "Doctrine Annotations integration into Nette Framework",
+	"keywords": ["nette", "kdyby", "doctrine", "annotations"],
+	"homepage": "http://kdyby.org",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Filip Procházka",
+			"homepage": "http://filip-prochazka.com",
+			"email": "filip@prochazka.su"
+		},
+		{
+			"name": "Jáchym Toušek",
+			"homepage": "http://enumag.cz",
+			"email": "enumag@gmail.com"
+		}
+	],
+	"support": {
+		"email": "filip@prochazka.su",
+		"issues": "https://github.com/kdyby/annotations/issues"
+	},
+	"require": {
+		"nette/nette": "2.1.*",
+
+		"doctrine/annotations": "~1.1",
+		"kdyby/doctrine-cache": "~2.2"
+	},
+	"require-dev": {
+		"nette/tester": "@dev",
+		"jakub-onderka/php-parallel-lint": "~0.6"
+	},
+	"conflict": {
+		"kdyby/doctrine": "0.9.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"Kdyby\\Annotations\\": "src/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.0-dev"
+		}
+	}
+}

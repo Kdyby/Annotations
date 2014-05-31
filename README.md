@@ -2,7 +2,7 @@ Kdyby/Annotations
 ======
 
 [![Build Status](https://travis-ci.org/Kdyby/Annotations.svg?branch=master)](https://travis-ci.org/Kdyby/Annotations)
-[![Downloads this Month](https://img.shields.io/packagist/dm/Kdyby/Annotations.svg)](https://packagist.org/packages/Kdyby/Annotations)
+[![Downloads this Month](https://img.shields.io/packagist/dm/kdyby/annotations.svg)](https://packagist.org/packages/kdyby/annotations)
 [![Latest stable](https://img.shields.io/packagist/v/kdyby/annotations.svg)](https://packagist.org/packages/kdyby/annotations)
 
 

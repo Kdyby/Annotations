@@ -1,5 +1,9 @@
 Kdyby/Annotations
-===========================
+======
+
+[![Build Status](https://travis-ci.org/Kdyby/Annotations.svg?branch=nette-2.1)](https://travis-ci.org/Kdyby/Annotations)
+[![Downloads this Month](https://img.shields.io/packagist/dm/kdyby/annotations.svg)](https://packagist.org/packages/kdyby/annotations)
+[![Latest stable](https://img.shields.io/packagist/v/kdyby/annotations.svg)](https://packagist.org/packages/kdyby/annotations)
 
 
 Requirements
@@ -7,8 +11,8 @@ Requirements
 
 Kdyby/Annotations requires PHP 5.3.2.
 
-- [Nette Framework 2.0.x](https://github.com/nette/nette)
-- [Doctrine Annotations 1.1](https://github.com/doctrine/annotations)
+- [Nette Framework](https://github.com/nette/nette)
+- [Doctrine Annotations](https://github.com/doctrine/annotations)
 
 
 Installation
@@ -17,8 +21,14 @@ Installation
 The best way to install Kdyby/Annotations is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require kdyby/annotations:@dev
+$ composer require kdyby/annotations:~2.0.5
 ```
+
+
+Documentation
+------------
+
+Lear more in the [documentation](https://github.com/Kdyby/Annotations/blob/nette-2.1/docs/en/index.md).
 
 
 -----

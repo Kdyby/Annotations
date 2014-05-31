@@ -1,5 +1,9 @@
 Kdyby/Annotations
-===========================
+======
+
+[![Build Status](https://travis-ci.org/Kdyby/Annotations.svg?branch=master)](https://travis-ci.org/Kdyby/Annotations)
+[![Downloads this Month](https://img.shields.io/packagist/dm/Kdyby/Annotations.svg)](https://packagist.org/packages/Kdyby/Annotations)
+[![Latest stable](img.shields.io/packagist/v/Kdyby/Annotations.svg)](https://packagist.org/packages/Kdyby/Annotations)
 
 
 Requirements

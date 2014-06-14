@@ -28,7 +28,7 @@ $ composer require kdyby/annotations:~2.0
 Documentation
 ------------
 
-Lear more in the [documentation](https://github.com/Kdyby/Annotations/blob/master/docs/en/index.md).
+Learn more in the [documentation](https://github.com/Kdyby/Annotations/blob/master/docs/en/index.md).
 
 
 -----

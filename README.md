@@ -28,7 +28,7 @@ $ composer require kdyby/annotations:~2.0.5
 Documentation
 ------------
 
-Lear more in the [documentation](https://github.com/Kdyby/Annotations/blob/nette-2.1/docs/en/index.md).
+Learn more in the [documentation](https://github.com/Kdyby/Annotations/blob/nette-2.1/docs/en/index.md).
 
 
 -----

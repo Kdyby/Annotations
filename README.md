@@ -21,7 +21,7 @@ Installation
 The best way to install Kdyby/Annotations is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require kdyby/annotations:~2.0
+$ composer require kdyby/annotations:~2.1
 ```
 
 

@@ -24,11 +24,11 @@
 	"require": {
 		"nette/nette": "2.1.*@dev",
 
-		"doctrine/annotations": "~1.1",
-		"kdyby/doctrine-cache": "~2.2"
+		"doctrine/annotations": "~1.2",
+		"kdyby/doctrine-cache": "2.2.*"
 	},
 	"require-dev": {
-		"nette/tester": "@dev",
+		"nette/tester": "~1.3@rc",
 		"jakub-onderka/php-parallel-lint": "~0.7"
 	},
 	"conflict": {

@@ -22,11 +22,11 @@
 		"issues": "https://github.com/kdyby/annotations/issues"
 	},
 	"require": {
-		"nette/di": "~2.2@dev",
-		"nette/utils": "~2.2@dev",
+		"nette/di": "~2.3@dev",
+		"nette/utils": "~2.3@dev",
 
 		"doctrine/annotations": "~1.2",
-		"kdyby/doctrine-cache": "~2.3@dev"
+		"kdyby/doctrine-cache": "~2.4@dev"
 	},
 	"require-dev": {
 		"nette/application": "~2.3@dev",
@@ -34,7 +34,7 @@
 		"nette/caching": "~2.3@dev",
 		"nette/component-model": "~2.2@dev",
 		"nette/database": "~2.3@dev",
-		"nette/deprecated": "~2.2@dev",
+		"nette/deprecated": "~2.3@dev",
 		"nette/di": "~2.3@dev",
 		"nette/finder": "~2.3@dev",
 		"nette/forms": "~2.3@dev",
@@ -63,7 +63,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.1-dev"
+			"dev-master": "2.2-dev"
 		}
 	}
 }

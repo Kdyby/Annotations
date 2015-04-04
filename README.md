@@ -9,7 +9,7 @@ Kdyby/Annotations
 Requirements
 ------------
 
-Kdyby/Annotations requires PHP 5.3.2.
+Kdyby/Annotations requires PHP 5.4.
 
 - [Nette Framework](https://github.com/nette/nette)
 - [Doctrine Annotations](https://github.com/doctrine/annotations)
@@ -21,7 +21,7 @@ Installation
 The best way to install Kdyby/Annotations is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require kdyby/annotations:~2.1
+$ composer require kdyby/annotations
 ```
 
 

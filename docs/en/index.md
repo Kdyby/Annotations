@@ -10,22 +10,14 @@ Installation
 The best way to install Kdyby/Annotations is using  [Composer](http://getcomposer.org/):
 
 ```sh
-$ composer require kdyby/annotations:@dev
+$ composer require kdyby/annotations
 ```
 
-With Nette 2.1, you can enable the extension using your neon config.
+and enable the extension using your neon config
 
 ```yml
 extensions:
 	annotations: Kdyby\Annotations\DI\AnnotationsExtension
-```
-
-If you're using Nette 2.0, you have to register them in `app/bootstrap.php`
-
-```php
-Kdyby\Annotations\DI\AnnotationsExtension::register($configurator);
-
-return $configurator->createContainer();
 ```
 
 

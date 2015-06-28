@@ -10,6 +10,7 @@
 
 namespace Kdyby\Annotations\DI;
 
+use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Kdyby\DoctrineCache\DI\Helpers;
 use Nette;
@@ -49,6 +50,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 		Validators::assertField($config, 'ignore', 'array');
 		foreach ($config['ignore'] as $annotationName) {
 			$reflectionReader->addSetup('addGlobalIgnoredName', array($annotationName));
+			AnnotationReader::addGlobalIgnoredName($annotationName);
 		}
 
 		$builder->addDefinition($this->prefix('reader'))

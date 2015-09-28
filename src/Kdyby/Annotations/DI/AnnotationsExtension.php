@@ -59,8 +59,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 				$this->prefix('@reflectionReader'),
 				Helpers::processCache($this, $config['cache'], 'annotations'),
 				$config['debug']
-			))
-			->setInject(FALSE);
+			));
 
 		// for runtime
 		AnnotationRegistry::registerLoader("class_exists");

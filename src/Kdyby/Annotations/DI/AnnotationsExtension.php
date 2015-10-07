@@ -57,7 +57,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 			->setClass('Doctrine\Common\Annotations\Reader')
 			->setFactory('Doctrine\Common\Annotations\CachedReader', array(
 				$this->prefix('@reflectionReader'),
-				Helpers::processCache($this, $config['cache'], 'annotations'),
+				Helpers::processCache($this, $config['cache'], 'annotations', $config['debug']),
 				$config['debug']
 			));
 

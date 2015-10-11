@@ -32,7 +32,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 			'persistent',
 			'serializationVersion',
 		),
-		'cache' => 'default',
+		'cache' => 'filesystem',
 		'debug' => '%debugMode%',
 	);
 

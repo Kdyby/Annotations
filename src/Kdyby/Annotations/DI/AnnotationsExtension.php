@@ -89,7 +89,9 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 	public function afterCompile(Code\ClassType $class)
 	{
 		$init = $class->methods['initialize'];
-		$init->addBody('Doctrine\Common\Annotations\AnnotationRegistry::registerLoader("class_exists");');
+		$originalInitialize = $init->getBody();
+		$init->setBody('Doctrine\Common\Annotations\AnnotationRegistry::registerLoader("class_exists");' . "\n");
+		$init->addBody($originalInitialize);
 	}
 
 

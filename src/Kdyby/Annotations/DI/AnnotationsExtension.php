@@ -27,14 +27,14 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 {
 
 	/** @var array */
-	public $defaults = array(
-		'ignore' => array(
+	public $defaults = [
+		'ignore' => [
 			'persistent',
 			'serializationVersion',
-		),
+		],
 		'cache' => 'default',
 		'debug' => '%debugMode%',
-	);
+	];
 
 
 
@@ -49,17 +49,17 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 
 		Validators::assertField($config, 'ignore', 'array');
 		foreach ($config['ignore'] as $annotationName) {
-			$reflectionReader->addSetup('addGlobalIgnoredName', array($annotationName));
+			$reflectionReader->addSetup('addGlobalIgnoredName', [$annotationName]);
 			AnnotationReader::addGlobalIgnoredName($annotationName);
 		}
 
 		$builder->addDefinition($this->prefix('reader'))
 			->setClass('Doctrine\Common\Annotations\Reader')
-			->setFactory('Doctrine\Common\Annotations\CachedReader', array(
+			->setFactory('Doctrine\Common\Annotations\CachedReader', [
 				$this->prefix('@reflectionReader'),
 				Helpers::processCache($this, $config['cache'], 'annotations', $config['debug']),
 				$config['debug']
-			));
+			]);
 
 		// for runtime
 		AnnotationRegistry::registerLoader("class_exists");
@@ -78,7 +78,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 		$globalConfig = $this->compiler->getConfig();
 		if (!empty($globalConfig['doctrine']['ignoredAnnotations'])) {
 			trigger_error("Section 'doctrine: ignoredAnnotations:' is deprecated, please use '$this->name: ignore:' ", E_USER_DEPRECATED);
-			$config = Nette\DI\Config\Helpers::merge($config, array('ignore' => $globalConfig['doctrine']['ignoredAnnotations']));
+			$config = Nette\DI\Config\Helpers::merge($config, ['ignore' => $globalConfig['doctrine']['ignoredAnnotations']]);
 		}
 
 		return $this->compiler->getContainerBuilder()->expand($config);

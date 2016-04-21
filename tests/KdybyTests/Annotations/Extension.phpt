@@ -36,7 +36,7 @@ class ExtensionTest extends Tester\TestCase
 		$config->setTempDirectory(TEMP_DIR);
 		$config->addParameters(['container' => ['class' => 'SystemContainer_' . md5($configFile)]]);
 		$config->addConfig(__DIR__ . '/../nette-reset.neon');
-		$config->addConfig(__DIR__ . '/config/' . $configFile . '.neon', $config::NONE);
+		$config->addConfig(__DIR__ . '/config/' . $configFile . '.neon');
 		Kdyby\Annotations\DI\AnnotationsExtension::register($config);
 
 		return $config->createContainer();

@@ -41,6 +41,11 @@
 			"Kdyby\\Annotations\\": "src/"
 		}
 	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/KdybyTests/"
+		]
+	},
 	"extra": {
 		"branch-alias": {
 			"dev-master": "2.4-dev"

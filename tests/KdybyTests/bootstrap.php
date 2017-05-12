@@ -12,7 +12,6 @@ if ((!$loader = @include __DIR__ . '/../../vendor/autoload.php') && (!$loader = 
 	echo 'Install Nette Tester using `composer update --dev`';
 	exit(1);
 }
-$loader->add('KdybyTests', __DIR__ . '/../');
 
 // configure environment
 Tester\Environment::setup();
@@ -31,8 +30,4 @@ $_ENV = $_GET = $_POST = [];
 
 function id($val) {
 	return $val;
-}
-
-function run(Tester\TestCase $testCase) {
-	$testCase->run();
 }

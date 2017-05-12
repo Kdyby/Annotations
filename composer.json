@@ -37,7 +37,7 @@
 		"kdyby/doctrine": "0.9.*"
 	},
 	"autoload": {
-		"psr-0": {
+		"psr-4": {
 			"Kdyby\\Annotations\\": "src/"
 		}
 	},

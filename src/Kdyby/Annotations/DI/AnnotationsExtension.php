@@ -14,7 +14,6 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Kdyby\DoctrineCache\DI\Helpers;
 use Nette;
-use Nette\PhpGenerator as Code;
 use Nette\Utils\Validators;
 
 
@@ -86,7 +85,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 
 
 
-	public function afterCompile(Code\ClassType $class)
+	public function afterCompile(Nette\PhpGenerator\ClassType $class)
 	{
 		$init = $class->getMethod('initialize');
 		$originalInitialize = $init->getBody();

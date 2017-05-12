@@ -4,9 +4,3 @@ php:
 services:
 	cacheStorage:
 		class: Nette\Caching\Storages\MemoryStorage
-
-http:
-	frames: null
-
-session:
-	autoStart: false

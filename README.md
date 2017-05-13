@@ -5,7 +5,7 @@ Kdyby/Annotations
 [![Downloads this Month](https://img.shields.io/packagist/dm/kdyby/annotations.svg)](https://packagist.org/packages/kdyby/annotations)
 [![Latest stable](https://img.shields.io/packagist/v/kdyby/annotations.svg)](https://packagist.org/packages/kdyby/annotations)
 [![Coverage Status](https://coveralls.io/repos/github/Kdyby/Annotations/badge.svg?branch=master)](https://coveralls.io/github/Kdyby/Annotations?branch=master)
-[![Join the chat at https://gitter.im/Kdyby/Help](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Kdyby/Help)
+
 
 
 Requirements

@@ -24,13 +24,11 @@
 	"require": {
 		"nette/di": "^2.4@dev",
 		"nette/utils": "^2.4@dev",
-
 		"doctrine/annotations": "~1.2",
 		"kdyby/doctrine-cache": "^2.6@dev"
 	},
 	"require-dev": {
 		"nette/bootstrap": "^2.4@dev",
-
 		"nette/tester": "~1.7"
 	},
 	"conflict": {

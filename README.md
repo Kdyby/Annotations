@@ -6,17 +6,6 @@ Kdyby/Annotations
 [![Latest stable](https://img.shields.io/packagist/v/kdyby/annotations.svg)](https://packagist.org/packages/kdyby/annotations)
 [![Coverage Status](https://coveralls.io/repos/github/Kdyby/Annotations/badge.svg?branch=master)](https://coveralls.io/github/Kdyby/Annotations?branch=master)
 
-
-
-Requirements
-------------
-
-Kdyby/Annotations requires PHP 5.4.
-
-- [Nette Framework](https://github.com/nette/nette)
-- [Doctrine Annotations](https://github.com/doctrine/annotations)
-
-
 Installation
 ------------
 
@@ -26,12 +15,10 @@ The best way to install Kdyby/Annotations is using  [Composer](http://getcompose
 $ composer require kdyby/annotations
 ```
 
-
 Documentation
 ------------
 
 Learn more in the [documentation](https://github.com/Kdyby/Annotations/blob/master/docs/en/index.md).
-
 
 -----
 

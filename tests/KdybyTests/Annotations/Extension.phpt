@@ -11,6 +11,7 @@
 namespace KdybyTests\Annotations;
 
 use Doctrine;
+use Doctrine\Common\Annotations\Reader;
 use Kdyby;
 use Nette;
 use Tester;
@@ -47,14 +48,14 @@ class ExtensionTest extends Tester\TestCase
 	public function testFunctionality()
 	{
 		$container = $this->createContainer('ignored');
-		$reader = $container->getByType('Doctrine\Common\Annotations\Reader');
-		Assert::true($reader instanceof Doctrine\Common\Annotations\Reader);
-		/** @var Doctrine\Common\Annotations\Reader $reader */
+		$reader = $container->getByType(Reader::class);
+		Assert::true($reader instanceof Reader);
+		/** @var \Doctrine\Common\Annotations\Reader $reader */
 
 		require_once __DIR__ . '/files/ignored.php';
-		$annotations = $reader->getPropertyAnnotations(new \ReflectionProperty('KdybyTests\Annotations\Dj', 'music'));
+		$annotations = $reader->getPropertyAnnotations(new \ReflectionProperty(Dj::class, 'music'));
 		Assert::equal([
-			new \KdybyTests\Annotations\HandsInTheAir([])
+			new HandsInTheAir([])
 		], $annotations);
 	}
 

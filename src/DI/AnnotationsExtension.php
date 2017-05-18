@@ -12,6 +12,8 @@ namespace Kdyby\Annotations\DI;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
+use Doctrine\Common\Annotations\CachedReader;
+use Doctrine\Common\Annotations\Reader;
 use Kdyby\DoctrineCache\DI\Helpers;
 use Nette;
 use Nette\PhpGenerator as Code;
@@ -44,7 +46,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 		$config = $this->getConfig($this->defaults);
 
 		$reflectionReader = $builder->addDefinition($this->prefix('reflectionReader'))
-			->setClass('Doctrine\Common\Annotations\AnnotationReader')
+			->setClass(AnnotationReader::class)
 			->setAutowired(FALSE);
 
 		Validators::assertField($config, 'ignore', 'array');
@@ -54,8 +56,8 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 		}
 
 		$builder->addDefinition($this->prefix('reader'))
-			->setClass('Doctrine\Common\Annotations\Reader')
-			->setFactory('Doctrine\Common\Annotations\CachedReader', [
+			->setClass(Reader::class)
+			->setFactory(CachedReader::class, [
 				$this->prefix('@reflectionReader'),
 				Helpers::processCache($this, $config['cache'], 'annotations', $config['debug']),
 				$config['debug']
@@ -90,7 +92,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 	{
 		$init = $class->getMethod('initialize');
 		$originalInitialize = (string) $init->getBody();
-		$init->setBody('Doctrine\Common\Annotations\AnnotationRegistry::registerLoader("class_exists");' . "\n");
+		$init->setBody('?::registerLoader("class_exists");' . "\n", [new Code\PhpLiteral(AnnotationRegistry::class)]);
 		$init->addBody($originalInitialize);
 	}
 

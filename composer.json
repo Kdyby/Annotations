@@ -42,6 +42,9 @@
 		}
 	},
 	"autoload-dev": {
+		"psr-4": {
+			"KdybyTests\\": "tests/KdybyTests/"
+		},
 		"classmap": [
 			"tests/KdybyTests/"
 		]

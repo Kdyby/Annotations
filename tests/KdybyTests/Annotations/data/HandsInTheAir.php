@@ -10,29 +10,11 @@
 
 namespace KdybyTests\Annotations;
 
-use Doctrine\Common\Annotations\Annotation;
-use Nette;
-
-
-
-class Dj extends Nette\Object
-{
-
-	/**
-	 * @dropTheBass
-	 * @HandsInTheAir
-	 */
-	public $music;
-
-}
-
-
-
 /**
  * @Annotation
  * @Target("PROPERTY")
  */
-class HandsInTheAir extends Annotation
+class HandsInTheAir extends \Doctrine\Common\Annotations\Annotation
 {
 
 }

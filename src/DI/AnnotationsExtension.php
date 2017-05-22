@@ -43,7 +43,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 	public function loadConfiguration()
 	{
 		$builder = $this->getContainerBuilder();
-		$config = $this->getConfig($this->defaults);
+		$config = $this->getModifiedConfig($this->defaults);
 
 		$reflectionReader = $builder->addDefinition($this->prefix('reflectionReader'))
 			->setClass(AnnotationReader::class)
@@ -72,9 +72,9 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 	/**
 	 * @return array
 	 */
-	public function getConfig(array $defaults = NULL, $expand = TRUE)
+	public function getModifiedConfig(array $defaults = NULL)
 	{
-		$config = parent::getConfig($defaults, $expand);
+		$config = $this->validateConfig($defaults);
 
 		// ignoredAnnotations
 		$globalConfig = $this->compiler->getConfig();

@@ -72,7 +72,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 	/**
 	 * @return array
 	 */
-	public function getModifiedConfig(array $defaults = NULL)
+	public function getModifiedConfig(array $defaults = [])
 	{
 		$config = $this->validateConfig($defaults);
 

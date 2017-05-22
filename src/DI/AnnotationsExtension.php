@@ -83,7 +83,7 @@ class AnnotationsExtension extends Nette\DI\CompilerExtension
 			$config = Nette\DI\Config\Helpers::merge($config, ['ignore' => $globalConfig['doctrine']['ignoredAnnotations']]);
 		}
 
-		return $this->compiler->getContainerBuilder()->expand($config);
+		return Nette\DI\Helpers::expand($config, $this->compiler->getContainerBuilder()->parameters);
 	}
 
 

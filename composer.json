@@ -34,6 +34,10 @@
 	},
 	"minimum-stability": "dev",
 	"conflict": {
+		"nette/caching": "<2.5.0",
+		"nette/finder": "<2.4.1",
+		"nette/neon": "<2.4.2",
+		"nette/utils": "<2.4.5",
 		"kdyby/doctrine": "0.9.*"
 	},
 	"autoload": {

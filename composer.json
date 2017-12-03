@@ -29,7 +29,7 @@
 		"kdyby/doctrine-cache": "^2.6.1@dev"
 	},
 	"require-dev": {
-		"nette/bootstrap": "^2.4@dev",
+		"nette/bootstrap": "^2.4.5@dev",
 		"nette/tester": "^2.0"
 	},
 	"minimum-stability": "dev",

@@ -26,7 +26,7 @@
 		"nette/di": "^2.4@dev",
 		"nette/utils": "^2.4@dev",
 		"doctrine/annotations": "~1.2",
-		"kdyby/doctrine-cache": "^2.6@dev"
+		"kdyby/doctrine-cache": "^2.6.1@dev"
 	},
 	"require-dev": {
 		"nette/bootstrap": "^2.4@dev",

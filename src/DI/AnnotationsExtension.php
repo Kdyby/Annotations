@@ -59,7 +59,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 			]);
 
 		// for runtime
-		AnnotationRegistry::registerLoader('class_exists');
+		AnnotationRegistry::registerUniqueLoader('class_exists');
 	}
 
 	/**
@@ -83,7 +83,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 	{
 		$init = $class->getMethod('initialize');
 		$originalInitialize = (string) $init->getBody();
-		$init->setBody('?::registerLoader("class_exists");' . "\n", [new PhpLiteral(AnnotationRegistry::class)]);
+		$init->setBody('?::registerUniqueLoader("class_exists");' . "\n", [new PhpLiteral(AnnotationRegistry::class)]);
 		$init->addBody($originalInitialize);
 	}
 

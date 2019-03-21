@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: Kdyby\Doctrine\Extension.
@@ -25,7 +25,7 @@ class ExtensionTest extends \Tester\TestCase
 	 * @param string $configFile
 	 * @return \Nette\DI\Container
 	 */
-	public function createContainer($configFile)
+	public function createContainer($configFile): \Nette\DI\Container
 	{
 		$config = new Configurator();
 		$config->setTempDirectory(TEMP_DIR);
@@ -37,7 +37,7 @@ class ExtensionTest extends \Tester\TestCase
 		return $config->createContainer();
 	}
 
-	public function testFunctionality()
+	public function testFunctionality(): void
 	{
 		$container = $this->createContainer('ignored');
 		/** @var \Doctrine\Common\Annotations\Reader $reader */

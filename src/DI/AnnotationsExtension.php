@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * This file is part of the Kdyby (http://www.kdyby.org)
@@ -35,7 +35,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 		'debug' => '%debugMode%',
 	];
 
-	public function loadConfiguration()
+	public function loadConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
 		$config = $this->getConfig($this->defaults);
@@ -65,7 +65,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 	/**
 	 * @return array
 	 */
-	public function getConfig(array $defaults = NULL, $expand = TRUE)
+	public function getConfig(array $defaults = NULL, $expand = TRUE): array
 	{
 		$config = parent::getConfig($defaults, $expand);
 
@@ -79,7 +79,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 		return $this->compiler->getContainerBuilder()->expand($config);
 	}
 
-	public function afterCompile(ClassTypeGenerator $class)
+	public function afterCompile(ClassTypeGenerator $class): void
 	{
 		$init = $class->getMethod('initialize');
 		$originalInitialize = (string) $init->getBody();
@@ -87,7 +87,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 		$init->addBody($originalInitialize);
 	}
 
-	public static function register(Configurator $configurator)
+	public static function register(Configurator $configurator): void
 	{
 		$configurator->onCompile[] = function ($config, DICompiler $compiler) {
 			$compiler->addExtension('annotations', new AnnotationsExtension());

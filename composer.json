@@ -30,7 +30,7 @@
 	},
 	"require-dev": {
 		"nette/bootstrap": "^2.4.5@dev",
-		"nette/tester": "^2.0"
+		"nette/tester": "^2.2"
 	},
 	"minimum-stability": "dev",
 	"conflict": {

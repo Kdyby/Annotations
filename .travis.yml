@@ -7,29 +7,29 @@ cache:
         - $HOME/.composer/cache
 
 php:
-  - 7.1
-  - 7.2
-  - nightly
+    - 7.1
+    - 7.2
+    - 7.3
 
 env:
-  - # dev
-  - COMPOSER_EXTRA_ARGS="--prefer-stable"
-  - COMPOSER_EXTRA_ARGS="--prefer-lowest --prefer-stable"
+    - # dev
+    - COMPOSER_EXTRA_ARGS="--prefer-stable"
+    - COMPOSER_EXTRA_ARGS="--prefer-lowest --prefer-stable"
 
 matrix:
-  fast_finish: true
-  include:
-    - php: 7.2
-      env: COMPOSER_EXTRA_ARGS="--prefer-stable" COVERAGE="--coverage ./coverage.xml --coverage-src ./src" TESTER_RUNTIME="phpdbg"
-    - php: 7.2
-      env: COMPOSER_EXTRA_ARGS="--prefer-stable" PHPSTAN=1
-    - php: 7.2
-      env: COMPOSER_EXTRA_ARGS="--prefer-stable" CODING_STANDARD=1
-  exclude:
-    - php: 7.2
-      env: COMPOSER_EXTRA_ARGS="--prefer-stable"
-  allow_failures:
-    - php: nightly
+    fast_finish: true
+    include:
+        - php: 7.3
+          env: COMPOSER_EXTRA_ARGS="--prefer-stable" COVERAGE="--coverage ./coverage.xml --coverage-src ./src" TESTER_RUNTIME="phpdbg"
+        - php: 7.3
+          env: COMPOSER_EXTRA_ARGS="--prefer-stable" PHPSTAN=1
+        - php: 7.3
+          env: COMPOSER_EXTRA_ARGS="--prefer-stable" CODING_STANDARD=1
+    exclude:
+        - php: 7.3
+          env: COMPOSER_EXTRA_ARGS="--prefer-stable"
+    allow_failures:
+        - env:
 
 install:
   - travis_retry composer update --no-interaction --no-suggest --no-progress --prefer-dist $COMPOSER_EXTRA_ARGS

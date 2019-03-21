@@ -43,7 +43,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 		$config = $this->getConfig($this->defaults);
 
 		$reflectionReader = $builder->addDefinition($this->prefix('reflectionReader'))
-			->setClass(AnnotationReader::class)
+			->setType(AnnotationReader::class)
 			->setAutowired(FALSE);
 
 		Validators::assertField($config, 'ignore', 'array');

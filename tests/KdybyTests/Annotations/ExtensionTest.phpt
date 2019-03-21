@@ -8,11 +8,6 @@
 
 namespace KdybyTests\Annotations;
 
-use Doctrine\Common\Annotations\Reader;
-use Kdyby\Annotations\DI\AnnotationsExtension;
-use Nette\Configurator;
-use ReflectionProperty;
-use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
@@ -27,12 +22,12 @@ class ExtensionTest extends \Tester\TestCase
 	 */
 	public function createContainer($configFile)
 	{
-		$config = new Configurator();
+		$config = new \Nette\Configurator();
 		$config->setTempDirectory(TEMP_DIR);
 		$config->addParameters(['container' => ['class' => 'SystemContainer_' . md5($configFile)]]);
 		$config->addConfig(__DIR__ . '/../nette-reset.neon');
 		$config->addConfig(__DIR__ . '/config/' . $configFile . '.neon');
-		AnnotationsExtension::register($config);
+		\Kdyby\Annotations\DI\AnnotationsExtension::register($config);
 
 		return $config->createContainer();
 	}
@@ -41,14 +36,14 @@ class ExtensionTest extends \Tester\TestCase
 	{
 		$container = $this->createContainer('ignored');
 		/** @var \Doctrine\Common\Annotations\Reader $reader */
-		$reader = $container->getByType(Reader::class);
-		Assert::true($reader instanceof Reader);
+		$reader = $container->getByType(\Doctrine\Common\Annotations\Reader::class);
+		\Tester\Assert::true($reader instanceof \Doctrine\Common\Annotations\Reader);
 
 		require_once __DIR__ . '/data/Dj.php';
 		require_once __DIR__ . '/data/HandsInTheAir.php';
 
-		$annotations = $reader->getPropertyAnnotations(new ReflectionProperty(Dj::class, 'music'));
-		Assert::equal([
+		$annotations = $reader->getPropertyAnnotations(new \ReflectionProperty(Dj::class, 'music'));
+		\Tester\Assert::equal([
 			new HandsInTheAir([]),
 		], $annotations);
 	}

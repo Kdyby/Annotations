@@ -10,18 +10,6 @@
 
 namespace Kdyby\Annotations\DI;
 
-use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Annotations\AnnotationRegistry;
-use Doctrine\Common\Annotations\CachedReader;
-use Doctrine\Common\Annotations\Reader;
-use Kdyby\DoctrineCache\DI\Helpers;
-use Nette\Configurator;
-use Nette\DI\Compiler as DICompiler;
-use Nette\DI\Config\Helpers as ConfigHelpers;
-use Nette\PhpGenerator\ClassType as ClassTypeGenerator;
-use Nette\PhpGenerator\PhpLiteral;
-use Nette\Utils\Validators;
-
 class AnnotationsExtension extends \Nette\DI\CompilerExtension
 {
 
@@ -41,25 +29,25 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 		$config = $this->getConfig($this->defaults);
 
 		$reflectionReader = $builder->addDefinition($this->prefix('reflectionReader'))
-			->setClass(AnnotationReader::class)
+			->setClass(\Doctrine\Common\Annotations\AnnotationReader::class)
 			->setAutowired(FALSE);
 
-		Validators::assertField($config, 'ignore', 'array');
+		\Nette\Utils\Validators::assertField($config, 'ignore', 'array');
 		foreach ($config['ignore'] as $annotationName) {
 			$reflectionReader->addSetup('addGlobalIgnoredName', [$annotationName]);
-			AnnotationReader::addGlobalIgnoredName($annotationName);
+			\Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName($annotationName);
 		}
 
 		$builder->addDefinition($this->prefix('reader'))
-			->setClass(Reader::class)
-			->setFactory(CachedReader::class, [
+			->setClass(\Doctrine\Common\Annotations\Reader::class)
+			->setFactory(\Doctrine\Common\Annotations\CachedReader::class, [
 				$this->prefix('@reflectionReader'),
-				Helpers::processCache($this, $config['cache'], 'annotations', $config['debug']),
+				\Kdyby\DoctrineCache\DI\Helpers::processCache($this, $config['cache'], 'annotations', $config['debug']),
 				$config['debug'],
 			]);
 
 		// for runtime
-		AnnotationRegistry::registerUniqueLoader('class_exists');
+		\Doctrine\Common\Annotations\AnnotationRegistry::registerUniqueLoader('class_exists');
 	}
 
 	/**
@@ -73,23 +61,27 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 		$globalConfig = $this->compiler->getConfig();
 		if (!empty($globalConfig['doctrine']['ignoredAnnotations'])) {
 			trigger_error(sprintf("Section 'doctrine: ignoredAnnotations:' is deprecated, please use '%s: ignore:' ", $this->name), E_USER_DEPRECATED);
-			$config = ConfigHelpers::merge($config, ['ignore' => $globalConfig['doctrine']['ignoredAnnotations']]);
+			$config = \Nette\DI\Config\Helpers::merge($config, ['ignore' => $globalConfig['doctrine']['ignoredAnnotations']]);
 		}
 
 		return $this->compiler->getContainerBuilder()->expand($config);
 	}
 
-	public function afterCompile(ClassTypeGenerator $class)
+	public function afterCompile(\Nette\PhpGenerator\ClassType $class)
 	{
 		$init = $class->getMethod('initialize');
 		$originalInitialize = (string) $init->getBody();
-		$init->setBody('?::registerUniqueLoader("class_exists");' . "\n", [new PhpLiteral(AnnotationRegistry::class)]);
+		$init->setBody(
+			'?::registerUniqueLoader("class_exists");' . "\n",
+			[
+				new \Nette\PhpGenerator\PhpLiteral(\Doctrine\Common\Annotations\AnnotationRegistry::class)
+			]);
 		$init->addBody($originalInitialize);
 	}
 
-	public static function register(Configurator $configurator)
+	public static function register(\Nette\Configurator $configurator)
 	{
-		$configurator->onCompile[] = function ($config, DICompiler $compiler) {
+		$configurator->onCompile[] = function ($config, \Nette\DI\Compiler $compiler) {
 			$compiler->addExtension('annotations', new AnnotationsExtension());
 		};
 	}

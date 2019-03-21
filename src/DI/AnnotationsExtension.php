@@ -93,7 +93,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 
 	public static function register(Configurator $configurator): void
 	{
-		$configurator->onCompile[] = function (\Nette\Configurator$config, DICompiler $compiler): void {
+		$configurator->onCompile[] = function (Configurator $config, DICompiler $compiler): void {
 			$compiler->addExtension('annotations', new AnnotationsExtension());
 		};
 	}

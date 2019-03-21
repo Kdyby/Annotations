@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types = 1);
 
 /**
  * Test: Kdyby\Doctrine\Extension.
@@ -11,6 +13,7 @@ namespace KdybyTests\Annotations;
 use Doctrine\Common\Annotations\Reader;
 use Kdyby\Annotations\DI\AnnotationsExtension;
 use Nette\Configurator;
+use Nette\DI\Container;
 use ReflectionProperty;
 use Tester\Assert;
 
@@ -21,11 +24,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class ExtensionTest extends \Tester\TestCase
 {
 
-	/**
-	 * @param string $configFile
-	 * @return \Nette\DI\Container
-	 */
-	public function createContainer($configFile): \Nette\DI\Container
+	public function createContainer(string $configFile): Container
 	{
 		$config = new Configurator();
 		$config->setTempDirectory(TEMP_DIR);

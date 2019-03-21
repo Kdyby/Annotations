@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types = 1);
 
 /**
  * This file is part of the Kdyby (http://www.kdyby.org)
@@ -63,9 +65,11 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 	}
 
 	/**
+	 * @param array $defaults
+	 * @param bool $expand
 	 * @return array
 	 */
-	public function getConfig(array $defaults = NULL, $expand = TRUE): array
+	public function getConfig(?array $defaults = NULL, ?bool $expand = TRUE): array
 	{
 		$config = parent::getConfig($defaults, $expand);
 
@@ -89,7 +93,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 
 	public static function register(Configurator $configurator): void
 	{
-		$configurator->onCompile[] = function ($config, DICompiler $compiler) {
+		$configurator->onCompile[] = function (array $config, DICompiler $compiler): void {
 			$compiler->addExtension('annotations', new AnnotationsExtension());
 		};
 	}

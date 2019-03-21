@@ -30,7 +30,7 @@
 	},
 	"require-dev": {
 		"nette/bootstrap": "^2.4.5@dev",
-		"nette/tester": "^2.0",
+		"nette/tester": "^2.2",
 		"kdyby/coding-standard": "^1.0@dev",
 		"phpstan/phpstan-shim": "^0.11",
 		"jakub-onderka/php-parallel-lint": "^1.0"

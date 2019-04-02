@@ -11,10 +11,8 @@ declare(strict_types = 1);
 namespace KdybyTests\Annotations;
 
 use Doctrine\Common\Annotations\Reader;
-use Kdyby\Annotations\DI\AnnotationsExtension;
 use Nette\Configurator;
 use Nette\DI\Container;
-use ReflectionProperty;
 use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
@@ -31,7 +29,10 @@ class ExtensionTest extends \Tester\TestCase
 		$config->addParameters(['container' => ['class' => 'SystemContainer_' . md5($configFile)]]);
 		$config->addConfig(__DIR__ . '/../nette-reset.neon');
 		$config->addConfig(__DIR__ . '/config/' . $configFile . '.neon');
-		AnnotationsExtension::register($config);
+
+		$config->onCompile[] = static function ($config, \Nette\DI\Compiler $compiler): void {
+			$compiler->addExtension('annotations', new \Kdyby\Annotations\DI\AnnotationsExtension());
+		};
 
 		return $config->createContainer();
 	}

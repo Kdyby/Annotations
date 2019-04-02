@@ -17,8 +17,6 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Annotations\Reader;
 use Kdyby\DoctrineCache\DI\Helpers;
-use Nette\Configurator;
-use Nette\DI\Compiler as DICompiler;
 use Nette\DI\Config\Helpers as ConfigHelpers;
 use Nette\PhpGenerator\ClassType as ClassTypeGenerator;
 use Nette\PhpGenerator\PhpLiteral;
@@ -65,9 +63,9 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 	}
 
 	/**
-	 * @param array $defaults
+	 * @param array<mixed> $defaults
 	 * @param bool $expand
-	 * @return array
+	 * @return array<mixed>
 	 */
 	public function getConfig(?array $defaults = NULL, ?bool $expand = TRUE): array
 	{
@@ -89,13 +87,6 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 		$originalInitialize = (string) $init->getBody();
 		$init->setBody('?::registerUniqueLoader("class_exists");' . "\n", [new PhpLiteral(AnnotationRegistry::class)]);
 		$init->addBody($originalInitialize);
-	}
-
-	public static function register(Configurator $configurator): void
-	{
-		$configurator->onCompile[] = function (Configurator $config, DICompiler $compiler): void {
-			$compiler->addExtension('annotations', new AnnotationsExtension());
-		};
 	}
 
 }

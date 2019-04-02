@@ -46,9 +46,9 @@ class ExtensionTest extends \Tester\TestCase
 		require_once __DIR__ . '/data/Dj.php';
 		require_once __DIR__ . '/data/HandsInTheAir.php';
 
-		$annotations = $reader->getPropertyAnnotations(new ReflectionProperty(Dj::class, 'music'));
+		$annotations = $reader->getPropertyAnnotations(new \ReflectionProperty(\KdybyTests\Annotations\Data\Dj::class, 'music'));
 		Assert::equal([
-			new HandsInTheAir([]),
+			new \KdybyTests\Annotations\Data\HandsInTheAir([]),
 		], $annotations);
 	}
 

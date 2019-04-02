@@ -10,7 +10,7 @@ declare(strict_types = 1);
  * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
  */
 
-namespace KdybyTests\Annotations;
+namespace KdybyTests\Annotations\Data;
 
 class Dj
 {

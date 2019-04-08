@@ -44,9 +44,6 @@ class ExtensionTest extends \Tester\TestCase
 		$reader = $container->getByType(Reader::class);
 		Assert::true($reader instanceof Reader);
 
-		require_once __DIR__ . '/data/Dj.php';
-		require_once __DIR__ . '/data/HandsInTheAir.php';
-
 		$annotations = $reader->getPropertyAnnotations(new \ReflectionProperty(\KdybyTests\Annotations\Data\Dj::class, 'music'));
 		Assert::equal([
 			new \KdybyTests\Annotations\Data\HandsInTheAir([]),

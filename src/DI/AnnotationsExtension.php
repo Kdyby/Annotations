@@ -69,16 +69,18 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 	 */
 	public function getConfig(?array $defaults = NULL, ?bool $expand = TRUE): array
 	{
-		$config = parent::getConfig($defaults, $expand);
+		/** @var array $config */
+		$config = \Nette\DI\Config\Helpers::merge(parent::getConfig(), $defaults);
 
 		// ignoredAnnotations
 		$globalConfig = $this->compiler->getConfig();
 		if (!empty($globalConfig['doctrine']['ignoredAnnotations'])) {
 			trigger_error(sprintf("Section 'doctrine: ignoredAnnotations:' is deprecated, please use '%s: ignore:' ", $this->name), E_USER_DEPRECATED);
+			/** @var array $config */
 			$config = ConfigHelpers::merge($config, ['ignore' => $globalConfig['doctrine']['ignoredAnnotations']]);
 		}
 
-		return $this->compiler->getContainerBuilder()->expand($config);
+		return $config;
 	}
 
 	public function afterCompile(ClassTypeGenerator $class): void

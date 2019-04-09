@@ -30,7 +30,7 @@ matrix:
         - php: 7.3
           env: COMPOSER_EXTRA_ARGS="--prefer-stable"
     allow_failures:
-        - env:
+        - env: RUN_TESTS=1
 
 before_install:
   - travis_retry composer self-update

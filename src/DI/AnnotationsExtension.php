@@ -80,6 +80,10 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 			$config = ConfigHelpers::merge($config, ['ignore' => $globalConfig['doctrine']['ignoredAnnotations']]);
 		}
 
+		if (\array_key_exists('debugMode', $config)) {
+			$config['debug'] = $config['debugMode'];
+		}
+
 		return $config;
 	}
 

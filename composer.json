@@ -53,6 +53,7 @@
 			"KdybyTests\\": "tests/KdybyTests/"
 		}
 	},
+	"minimum-stability": "dev",
 	"extra": {
 		"branch-alias": {
 			"dev-master": "2.4-dev"

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * This file is part of the Kdyby (http://www.kdyby.org)
  *
@@ -15,8 +17,6 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Annotations\Reader;
 use Kdyby\DoctrineCache\DI\Helpers;
-use Nette\Configurator;
-use Nette\DI\Compiler as DICompiler;
 use Nette\DI\Config\Helpers as ConfigHelpers;
 use Nette\PhpGenerator\ClassType as ClassTypeGenerator;
 use Nette\PhpGenerator\PhpLiteral;
@@ -35,13 +35,13 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 		'debug' => '%debugMode%',
 	];
 
-	public function loadConfiguration()
+	public function loadConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
 		$config = $this->getConfig($this->defaults);
 
 		$reflectionReader = $builder->addDefinition($this->prefix('reflectionReader'))
-			->setClass(AnnotationReader::class)
+			->setType(AnnotationReader::class)
 			->setAutowired(FALSE);
 
 		Validators::assertField($config, 'ignore', 'array');
@@ -63,35 +63,36 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 	}
 
 	/**
-	 * @return array
+	 * @param array<mixed> $defaults
+	 * @param bool $expand
+	 * @return array<mixed>
 	 */
-	public function getConfig(array $defaults = NULL, $expand = TRUE)
+	public function getConfig(?array $defaults = NULL, ?bool $expand = TRUE): array
 	{
-		$config = parent::getConfig($defaults, $expand);
+		/** @var array $config */
+		$config = \Nette\DI\Config\Helpers::merge(parent::getConfig(), $defaults);
 
 		// ignoredAnnotations
 		$globalConfig = $this->compiler->getConfig();
 		if (!empty($globalConfig['doctrine']['ignoredAnnotations'])) {
 			trigger_error(sprintf("Section 'doctrine: ignoredAnnotations:' is deprecated, please use '%s: ignore:' ", $this->name), E_USER_DEPRECATED);
+			/** @var array $config */
 			$config = ConfigHelpers::merge($config, ['ignore' => $globalConfig['doctrine']['ignoredAnnotations']]);
 		}
 
-		return $this->compiler->getContainerBuilder()->expand($config);
+		if (\array_key_exists('debugMode', $config)) {
+			$config['debug'] = $config['debugMode'];
+		}
+
+		return $config;
 	}
 
-	public function afterCompile(ClassTypeGenerator $class)
+	public function afterCompile(ClassTypeGenerator $class): void
 	{
 		$init = $class->getMethod('initialize');
 		$originalInitialize = (string) $init->getBody();
 		$init->setBody('?::registerUniqueLoader("class_exists");' . "\n", [new PhpLiteral(AnnotationRegistry::class)]);
 		$init->addBody($originalInitialize);
-	}
-
-	public static function register(Configurator $configurator)
-	{
-		$configurator->onCompile[] = function ($config, DICompiler $compiler) {
-			$compiler->addExtension('annotations', new AnnotationsExtension());
-		};
 	}
 
 }

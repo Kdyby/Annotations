@@ -23,16 +23,19 @@
 	},
 	"require": {
 		"php": "^7.1",
-		"nette/di": "^2.4@dev",
-		"nette/utils": "^2.4@dev",
+		"nette/di": "^3.0",
+		"nette/utils": "^2.4 || ^3.0",
 		"doctrine/annotations": "~1.6",
-		"kdyby/doctrine-cache": "^2.6.1@dev"
+		"kdyby/doctrine-cache": "^2.7.0"
 	},
 	"require-dev": {
-		"nette/bootstrap": "^2.4.5@dev",
-		"nette/tester": "^2.0"
+		"nette/bootstrap": "^3.0",
+		"nette/tester": "^2.2",
+		"kdyby/coding-standard": "dev-master",
+		"phpstan/phpstan-shim": "^0.11.4",
+		"jakub-onderka/php-parallel-lint": "^1.0",
+		"php-coveralls/php-coveralls": "^2.1"
 	},
-	"minimum-stability": "dev",
 	"conflict": {
 		"nette/caching": "<2.5.0",
 		"nette/finder": "<2.4.1",
@@ -48,14 +51,12 @@
 	"autoload-dev": {
 		"psr-4": {
 			"KdybyTests\\": "tests/KdybyTests/"
-		},
-		"classmap": [
-			"tests/KdybyTests/"
-		]
+		}
 	},
+	"minimum-stability": "dev",
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.4-dev"
+			"dev-master": "2.6-dev"
 		}
 	}
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * This file is part of the Kdyby (http://www.kdyby.org)
  *
@@ -8,16 +10,13 @@
  * For the full copyright and license information, please view the file license.txt that was distributed with this source code.
  */
 
-namespace KdybyTests\Annotations;
+namespace KdybyTests\Annotations\Data;
 
-class Dj
+/**
+ * @Annotation
+ * @Target("PROPERTY")
+ */
+class HandsInTheAir extends \Doctrine\Common\Annotations\Annotation
 {
-
-	/**
-	 * @dropTheBass
-	 * @HandsInTheAir
-	 * @var mixed
-	 */
-	public $music;
 
 }

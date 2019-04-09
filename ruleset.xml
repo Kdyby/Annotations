@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
-<ruleset name="Kdyby/Annotations">
-	<rule ref="vendor/kdyby/coding-standard/KdybyCodingStandard/ruleset-5.6.xml"/>
+<ruleset name="Kdyby/DoctrineCache">
+	<rule ref="./vendor/kdyby/coding-standard/ruleset.xml"/>
 </ruleset>

@@ -20,25 +20,39 @@ use Kdyby\DoctrineCache\DI\Helpers;
 use Nette\DI\Config\Helpers as ConfigHelpers;
 use Nette\PhpGenerator\ClassType as ClassTypeGenerator;
 use Nette\PhpGenerator\PhpLiteral;
+use Nette\Schema\Expect;
+use Nette\Schema\Schema;
 use Nette\Utils\Validators;
 
 class AnnotationsExtension extends \Nette\DI\CompilerExtension
 {
 
-	/** @var array */
-	public $defaults = [
-		'ignore' => [
-			'persistent',
-			'serializationVersion',
-		],
-		'cache' => 'default',
-		'debug' => '%debugMode%',
-	];
+	/** @var bool */
+	private $debugMode;
+
+	public function __construct(bool $debugMode = FALSE)
+	{
+		$this->debugMode = $debugMode;
+	}
+
+	public function getConfigSchema(): Schema
+	{
+		return Expect::structure([
+			'ignore' => Expect::arrayOf('string')->default([
+				'persistent',
+				'serializationVersion',
+			]),
+			'cache' => Expect::string('default'),
+			'debug' => Expect::bool(interface_exists('Tracy\IBarPanel')),
+			'debugMode' => Expect::bool(interface_exists('Tracy\IBarPanel')),
+		])->castTo('array');
+	}
 
 	public function loadConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
-		$config = $this->getConfig($this->defaults);
+		/** @var array $config */
+		$config = $this->config;
 
 		$reflectionReader = $builder->addDefinition($this->prefix('reflectionReader'))
 			->setType(AnnotationReader::class)
@@ -54,8 +68,8 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 			->setClass(Reader::class)
 			->setFactory(CachedReader::class, [
 				$this->prefix('@reflectionReader'),
-				Helpers::processCache($this, $config['cache'], 'annotations', $config['debug']),
-				$config['debug'],
+				Helpers::processCache($this, $config['cache'], 'annotations', $config['debug'] && $this->debugMode),
+				$config['debug'] && $this->debugMode,
 			]);
 
 		// for runtime

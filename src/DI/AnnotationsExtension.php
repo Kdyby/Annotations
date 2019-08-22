@@ -27,14 +27,6 @@ use Nette\Utils\Validators;
 class AnnotationsExtension extends \Nette\DI\CompilerExtension
 {
 
-	/** @var bool */
-	private $debugMode;
-
-	public function __construct(bool $debugMode = FALSE)
-	{
-		$this->debugMode = $debugMode;
-	}
-
 	public function getConfigSchema(): Schema
 	{
 		return Expect::structure([
@@ -68,8 +60,8 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 			->setClass(Reader::class)
 			->setFactory(CachedReader::class, [
 				$this->prefix('@reflectionReader'),
-				Helpers::processCache($this, $config['cache'], 'annotations', $config['debug'] && $this->debugMode),
-				$config['debug'] && $this->debugMode,
+				Helpers::processCache($this, $config['cache'], 'annotations', $config['debug']),
+				$config['debug'],
 			]);
 
 		// for runtime

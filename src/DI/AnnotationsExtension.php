@@ -34,7 +34,7 @@ class AnnotationsExtension extends \Nette\DI\CompilerExtension
 				'persistent',
 				'serializationVersion',
 			]),
-			'cache' => Expect::string('default'),
+			'cache' => Expect::mixed('default'),
 			'debug' => Expect::bool(interface_exists('Tracy\IBarPanel')),
 			'debugMode' => Expect::bool(interface_exists('Tracy\IBarPanel')),
 		])->castTo('array');
